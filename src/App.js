@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Omkareshwar
+          Omkareshwar is good.
         </a>
       </header>
     </div>
