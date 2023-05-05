@@ -1,5 +1,9 @@
-// Backend : 
-// C:\Users\Omkar\Documents\programming_files\React-Js\iNotebook-BackEnd-MERN_Stack
+/*
+Backend : 
+cd C:\Users\Omkar\Documents\programming_files\React-Js\iNotebook-BackEnd-MERN_Stack
+npx nodemon ./indes.js
+
+*/
 import './App.css';
 import {
   BrowserRouter as Router,
