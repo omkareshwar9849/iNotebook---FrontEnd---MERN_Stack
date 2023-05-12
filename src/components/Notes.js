@@ -48,11 +48,11 @@ const Notes = () => {
                             <div className='my-3'>
                                 <div className="mb-3">
                                     <label htmlFor="title" className="form-label">Title</label>
-                                    <input type='text' className="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" value={note.etitle} onChange={onChange} />
+                                    <input type='text' className="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" value={note.etitle} onChange={onChange}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="desc" className="form-label">Description</label>
-                                    <input type="text" className="form-control" id="edescription" name='edescription' value={note.edescription} onChange={onChange} />
+                                    <input type="text" className="form-control" id="edescription" name='edescription' value={note.edescription} onChange={onChange}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="tag" className="form-label">Tag</label>
@@ -62,7 +62,7 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
+                            <button disabled={note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
                         </div>
                     </div>
                 </div>
@@ -70,12 +70,14 @@ const Notes = () => {
 
             <div className="row my-3">
                 <h2>Your Notes :-</h2>
+                <div className="container mx-2">
+                    {notes.lenght===0 && 'No notes to display'}
+                </div>
                 {notes.map((note) => {
                     return <NoteItem key={note._id} updateNote={updateNote} note={note} />;
                 })}
             </div>
-        </>
-    )
+        </>)
 }
 
 export default Notes
