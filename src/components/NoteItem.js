@@ -18,6 +18,7 @@ function NoteItem(props) {
             </div>
         </div>
     )
+    
 }
 
 export default NoteItem
