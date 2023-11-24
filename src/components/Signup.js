@@ -6,10 +6,13 @@ const Signup = (props) => {
   const [otp, setOtp] = useState('');
   const [showOtpBox, setShowOtpBox] = useState(false);
   let navigate = useNavigate();
+  const host = process.env.REACT_APP_BACKEND_HOST;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    if(credentials.cpassword === credentials.password){
+    const response = await fetch(`${host}/api/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -19,7 +22,7 @@ const Signup = (props) => {
     const json = await response.json();
     console.log(json)
     if (json.success) {
-      const res = await fetch(`http://localhost:5000/api/email/otp/${otp}`);
+      const res = await fetch(`${host}/api/email/otp/${otp}`);
       console.log(res.status)
       if (res.status === 200) {
         //save the auth token and redirect
@@ -32,29 +35,47 @@ const Signup = (props) => {
       }
     }
     else {
-      props.showAlert("Unable to Sign Up", "danger");
+      props.showAlert("User with this email already exist", "danger");
     }
+  }
+  else{
+    props.showAlert("Password and confirm password mismatch", "danger");
+  }
   }
 
   const handleSendOtp = async () => {
-    console.log("otp")
-    // fetch("http://localhost:5000/api/email/sendotp", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({ email: credentials.email })
-    // }).then((response) => {
-    //   console.log(response)
-    //   if (response.ok) {
-    //     props.showAlert("OTP Sent to your email successfully", "success");
+    const email = 0
+    if(email === 1){
+    fetch(`${host}/api/email/sendotp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: credentials.email })
+    }).then((response) => {
+      console.log(response)
+      console.log("hello");
+      if (response.ok) {
+      setShowOtpBox(true);
+      props.showAlert(`OTP Sent to your email successfully`, "success");
+    }
+  })
+    .catch((error) => {
+      console.error("Network error:", error);
+      console.log("hello");
+      console.log("Network error:", error);
+      props.showAlert("NETWORK ERROR : Unable to send OTP" + error, "danger");
+    });
+    }
+    else{
+    
         setShowOtpBox(true);
-    //   }
-    // })
-    //   .catch((error) => {
-    //     console.error("Network error:", error);
-    //   });
-
+        const otp = await fetch(`${host}/api/email/otp`);
+        const otpjson = await otp.json();
+        console.log(otpjson);
+        props.showAlert(`OTP Sent to your email successfully : ${otpjson.OTP}`, "success");
+        // props.showAlert(`OTP Sent to your email successfully`, "success");
+    }
   };
 
   const onChange = (e) => {

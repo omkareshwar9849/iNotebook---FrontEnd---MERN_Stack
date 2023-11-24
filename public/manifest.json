@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "iNotebook",
+  "name": "iNotebook an online note saving app with user authentication",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

@@ -1,12 +1,11 @@
 /*
 Backend : 
 cd C:\Users\Omkar\Documents\programming_files\React-Js\iNotebook-BackEnd-MERN_Stack
-npx nodemon ./indes.js
-
+npx nodemon ./index.js
 */
+
 import './App.css';
 import { useState } from 'react'
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +18,7 @@ import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Temp from './components/Temp';
+// import MyComponent from './components/Temp1';
 function App() {
   const [alert, setAlert] = useState(null);
 
@@ -43,9 +42,9 @@ function App() {
           <div className="container">
             <Routes>
               <Route path='/' element={<Home showAlert={showAlert} />}></Route>
-              <Route path='/Temp' element={<Temp />}></Route>
+              {/* <Route path='/Temp1' element={<MyComponent />}></Route> */}
               <Route path="/about" element={<About />}></Route>
-              <Route path="/login" element={<Login showAlert={showAlert} />}></Route>
+              <Route path="/login" element={<Login  showAlert={showAlert} />}></Route>
               <Route path="/signup" element={<Signup showAlert={showAlert} />}></Route>
             </Routes>
           </div>
