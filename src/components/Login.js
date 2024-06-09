@@ -10,7 +10,7 @@ const Login = (props) => {
   const host = process.env.REACT_APP_BACKEND_HOST;
   console.log(host)
 
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(`${host}/api/auth/login`, {
@@ -25,13 +25,13 @@ const Login = (props) => {
     if (json.success) {
       const res = await fetch(`${host}/api/email/otp/${otp}`);
       console.log(res.status)
-      if(res.status === 200){
+      if (res.status === 200) {
         //save the auth token and redirect
-      localStorage.setItem('token', json.authtoken);
-      props.showAlert("Login Successfully", "success");
-      navigate("/");
+        localStorage.setItem('token', json.authtoken);
+        props.showAlert("Login Successfully", "success");
+        navigate("/");
       }
-      else{
+      else {
         props.showAlert("Invalid OTP", "danger");
       }
     }
@@ -42,44 +42,44 @@ const Login = (props) => {
 
   const handleSendOtp = async () => {
     const email = 1
-    if(email === 1){
-    fetch(`${host}/api/email/sendotp`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email: credentials.email })
-    }).then((response) => {
-      console.log(response)
-      console.log("hello");
-      if (response.ok) {
+    if (email === 1) {
+      fetch(`${host}/api/email/sendotp`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: credentials.email })
+      }).then((response) => {
+        console.log(response)
+        console.log("hello");
+        if (response.ok) {
+          setShowOtpBox(true);
+          props.showAlert(`OTP Sent to your email successfully`, "success");
+        }
+      })
+        .catch((error) => {
+          console.error("Network error:", error);
+          console.log("hello");
+          console.log("Network error:", error);
+          props.showAlert("NETWORK ERROR : Unable to send OTP" + error, "danger");
+        });
+    }
+    else {
+
       setShowOtpBox(true);
-      props.showAlert(`OTP Sent to your email successfully`, "success");
-    }
-  })
-    .catch((error) => {
-      console.error("Network error:", error);
-      console.log("hello");
-      console.log("Network error:", error);
-      props.showAlert("NETWORK ERROR : Unable to send OTP" + error, "danger");
-    });
-    }
-    else{
-    
-        setShowOtpBox(true);
-        const otp = await fetch('http://192.168.1.4:5000/api/email/otp');
-        const otpjson = await otp.json();
-        console.log(otpjson);
-        props.showAlert(`OTP Sent to your email successfully : ${otpjson.OTP}`, "success");
-        // props.showAlert(`OTP Sent to your email successfully`, "success");
+      const otp = await fetch('http://192.168.1.4:5000/api/email/otp');
+      const otpjson = await otp.json();
+      console.log(otpjson);
+      props.showAlert(`OTP Sent to your email successfully : ${otpjson.OTP}`, "success");
+      // props.showAlert(`OTP Sent to your email successfully`, "success");
     }
   };
 
   const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
     if (e.target.name === "otp") {
       setOtp(e.target.value);
     }
-    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
   return (
@@ -105,6 +105,7 @@ const Login = (props) => {
               <label htmlFor="otp" autoComplete="false" className="form-label">Enter OTP</label>
               <input type="text" value={otp} maxLength={4} onChange={onChange} className="form-control" id="otp" name="otp" required />
             </div>
+            <button type="button" onClick={handleSendOtp} className="btn btn-primary me-2">Resend OTP</button>
             <button type="submit" className="btn btn-primary">Submit</button>
           </>
         )}
