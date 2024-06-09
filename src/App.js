@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <NoteState>
-        <Router>
+        <Router basename="/iNotebook-FrontEnd-MERN_Stack">
           <Navbar name="iNotebook" />
           <Alert alert={alert} />
           <div className="container">
