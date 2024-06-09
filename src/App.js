@@ -41,7 +41,7 @@ function App() {
           <Alert alert={alert} />
           <div className="container">
             <Routes>
-              <Route path='/iNotebook-FrontEnd-MERN_Stack' element={<Home showAlert={showAlert} />}></Route>
+              <Route path='/iNotebook-FrontEnd-MERN_Stack/' element={<Home showAlert={showAlert} />}></Route>
               {/* <Route path='/Temp1' element={<MyComponent />}></Route> */}
               <Route path="/about" element={<About />}></Route>
               <Route path="/login" element={<Login  showAlert={showAlert} />}></Route>
