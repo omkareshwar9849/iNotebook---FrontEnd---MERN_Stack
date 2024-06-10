@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/css/main.70493d54.css",
-    "main.js": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/js/main.33181eee.js",
-    "static/media/background.jpg": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/media/background.cdb3ec0e8b081ba47c11.jpg",
-    "static/media/logo.png": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/media/logo.87136c7e3e3421cd1f2d.png",
-    "index.html": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/index.html",
-    "main.70493d54.css.map": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/css/main.70493d54.css.map",
-    "main.33181eee.js.map": "/%7BiNotebook-FrontEnd-MERN_Stack%7D/static/js/main.33181eee.js.map"
+    "main.css": "/iNotebook-FrontEnd-MERN_Stack/static/css/main.3d555dfe.css",
+    "main.js": "/iNotebook-FrontEnd-MERN_Stack/static/js/main.56be0d02.js",
+    "static/media/background.jpg": "/iNotebook-FrontEnd-MERN_Stack/static/media/background.cdb3ec0e8b081ba47c11.jpg",
+    "static/media/logo.png": "/iNotebook-FrontEnd-MERN_Stack/static/media/logo.87136c7e3e3421cd1f2d.png",
+    "index.html": "/iNotebook-FrontEnd-MERN_Stack/index.html",
+    "main.3d555dfe.css.map": "/iNotebook-FrontEnd-MERN_Stack/static/css/main.3d555dfe.css.map",
+    "main.56be0d02.js.map": "/iNotebook-FrontEnd-MERN_Stack/static/js/main.56be0d02.js.map"
   },
   "entrypoints": [
-    "static/css/main.70493d54.css",
-    "static/js/main.33181eee.js"
+    "static/css/main.3d555dfe.css",
+    "static/js/main.56be0d02.js"
   ]
 }
